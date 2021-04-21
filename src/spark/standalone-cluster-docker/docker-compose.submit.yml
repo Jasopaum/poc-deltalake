@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  spark-submit:
+    image: spark-submit
+    build:
+      context: ./submit
+      dockerfile: spark-submit.Dockerfile
+    env_file: .db.env
+    networks:
+      spark-network:
+    volumes:
+      - ./mnt/spark-apps:/opt/spark-apps
+      - ./mnt/spark-jars:/opt/spark-jars
+
+networks:
+  spark-network:
